@@ -18,9 +18,7 @@ TriangleMesh.prototype.mulModelMat = function(){
   for (let i = 0; i < this.vertices.length / 3 ; i++){
     let v = vec4.fromValues(this.vertices[3*i], this.vertices[3*i+1], this.vertices[3*i+2], 0)
 
-
-    // console.log(this.modelMat)
-    // multiply by model mat 
+    // multiply by model mat
     vec4.transformMat4(v, v, this.modelMat)
 
     //save back 
@@ -34,7 +32,7 @@ TriangleMesh.prototype.mulModelMat = function(){
  * Generate the triangle objects for the mesh
  */
 TriangleMesh.prototype.generateTriangles = function(){
-  this.nb_triangles = this.vertices.length / 9 
+  this.nb_triangles = this.vertices.length / 9
 
   for (let i = 0; i < this.nb_triangles; i++){
     let i1 = 3 * i 
@@ -66,17 +64,6 @@ function Triangle(p1, p2, p3, mesh, i) {
  * @returns AABB - the bounding box
  */
 Triangle.prototype.boundingBox = function (){
-  // let min = vec3.fromValues(
-  //   Math.min(this.p1[0], Math.min(this.p2[0], this.p3[0])),
-  //   Math.min(this.p1[1], Math.min(this.p2[1], this.p3[1])),
-  //   Math.min(this.p1[2], Math.min(this.p2[2], this.p3[2])),
-  // )
-  // let max = vec3.fromValues(
-  //   Math.max(this.p1[0], Math.max(this.p2[0], this.p3[0])),
-  //   Math.max(this.p1[1], Math.max(this.p2[1], this.p3[1])),
-  //   Math.max(this.p1[2], Math.max(this.p2[2], this.p3[2])),
-  // )
-
   let min = vec3.create()
   let max = vec3.create()
   
